@@ -9,7 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "aahar - Where ingredients tell a story",
+  title: "Aahar",
   description:
     "From our kitchen to your table. Experience exceptional dining with fresh ingredients and Mediterranean flavors.",
     generator: 'Aahar-catering'
