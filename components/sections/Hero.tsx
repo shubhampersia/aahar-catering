@@ -1,23 +1,21 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true)
-  }, [])
+    setIsVisible(true);
+  }, []);
 
   return (
     <section className="relative h-screen flex items-center justify-center mt-24">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('/vibrant-restaurant-kitchen.png')`,
-        }}
+        style={{ backgroundColor: "black" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
@@ -28,20 +26,22 @@ export default function Hero() {
           isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
         }`}
       >
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-orange-500 mb-4">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#c68c2e] mb-4">
           WHERE INGREDIENTS TELL A STORY!
         </h1>
-        <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl">From our kitchen to your table.</p>
+        <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl">
+          From our kitchen to your table.
+        </p>
         <Button
           onClick={() => {
-            const ctaForm = document.getElementById("cta-form")
-            ctaForm?.scrollIntoView({ behavior: "smooth" })
+            const ctaForm = document.getElementById("cta-form");
+            ctaForm?.scrollIntoView({ behavior: "smooth" });
           }}
-          className="bg-orange-500 hover:bg-orange-600 text-white rounded-lg px-12 py-6 text-lg"
+          className="bg-[#c68c2e] hover:bg-[#c48621] text-white rounded-lg px-12 py-6 text-lg"
         >
           Get a custom quote
         </Button>
       </div>
     </section>
-  )
+  );
 }

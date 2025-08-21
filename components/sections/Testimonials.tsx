@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
+import { useState } from "react";
+import Image from "next/image";
 
 export default function Testimonials() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
     {
@@ -28,15 +28,18 @@ export default function Testimonials() {
       role: "Regular Customer",
       image: "/placeholder.svg?height=80&width=80",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-gray-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Customer Say</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Customer Say
+          </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Hear what our valued customers have to say about their dining experience
+            Hear what our valued customers have to say about their dining
+            experience
           </p>
         </div>
 
@@ -53,8 +56,12 @@ export default function Testimonials() {
               "{testimonials[currentTestimonial].quote}"
             </blockquote>
             <div>
-              <h4 className="font-bold text-gray-900 text-lg">{testimonials[currentTestimonial].name}</h4>
-              <p className="text-orange-500 font-medium">{testimonials[currentTestimonial].role}</p>
+              <h4 className="font-bold text-gray-900 text-lg">
+                {testimonials[currentTestimonial].name}
+              </h4>
+              <p className="text-[#c68c2e] font-medium">
+                {testimonials[currentTestimonial].role}
+              </p>
             </div>
           </div>
 
@@ -65,7 +72,7 @@ export default function Testimonials() {
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentTestimonial ? "bg-orange-500" : "bg-gray-300"
+                  index === currentTestimonial ? "bg-[#c68c2e]" : "bg-gray-300"
                 }`}
               />
             ))}
@@ -73,5 +80,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }

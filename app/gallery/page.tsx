@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import Image from "next/image";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function GalleryPage() {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const [currentPage, setCurrentPage] = useState(0)
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const allImages = [
     {
@@ -55,53 +55,56 @@ export default function GalleryPage() {
       alt: "Team building event catering",
       category: "Corporate Events",
     },
-  ]
+  ];
 
-  const imagesPerPage = [6, 3] // First page: 6 images, Second page: 3 images
-  const totalPages = 2
+  const imagesPerPage = [6, 3]; // First page: 6 images, Second page: 3 images
+  const totalPages = 2;
 
   const getCurrentPageImages = () => {
     if (currentPage === 0) {
-      return allImages.slice(0, 6)
+      return allImages.slice(0, 6);
     } else {
-      return allImages.slice(6, 9)
+      return allImages.slice(6, 9);
     }
-  }
+  };
 
-  const galleryImages = getCurrentPageImages()
+  const galleryImages = getCurrentPageImages();
 
   const openModal = (index: number) => {
-    const actualIndex = currentPage === 0 ? index : index + 6
-    setSelectedImage(actualIndex)
-  }
+    const actualIndex = currentPage === 0 ? index : index + 6;
+    setSelectedImage(actualIndex);
+  };
 
   const closeModal = () => {
-    setSelectedImage(null)
-  }
+    setSelectedImage(null);
+  };
 
   const nextImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % allImages.length)
+      setSelectedImage((selectedImage + 1) % allImages.length);
     }
-  }
+  };
 
   const prevImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + allImages.length) % allImages.length)
+      setSelectedImage(
+        (selectedImage - 1 + allImages.length) % allImages.length
+      );
     }
-  }
+  };
 
   return (
     <div className="pt-24">
       {/* Hero Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#c68c2e] mb-4">
             GALLERY
-            <div className="w-20 h-1 bg-orange-500 mt-2 mx-auto"></div>
+            <div className="w-20 h-1 bg-[#c68c2e] mt-2 mx-auto"></div>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of successful events, exquisite food presentations, and memorable celebrations
+            Explore our portfolio of successful events, exquisite food
+            presentations, and memorable celebrations
           </p>
         </div>
       </section>
@@ -137,7 +140,7 @@ export default function GalleryPage() {
             {currentPage > 0 && (
               <Button
                 onClick={() => setCurrentPage(currentPage - 1)}
-                className="flex items-center px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                className="flex items-center px-6 py-3 bg-[#c68c2e] text-white rounded-lg hover:bg-[#c48621] transition-colors"
               >
                 <ChevronLeft className="h-5 w-5 mr-2" />
                 Previous
@@ -147,7 +150,7 @@ export default function GalleryPage() {
             {currentPage < totalPages - 1 && (
               <Button
                 onClick={() => setCurrentPage(currentPage + 1)}
-                className="flex items-center px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                className="flex items-center px-6 py-3 bg-[#c68c2e] text-white rounded-lg hover:bg-[#c48621] transition-colors"
               >
                 Next
                 <ChevronRight className="h-5 w-5 ml-2" />
@@ -161,7 +164,10 @@ export default function GalleryPage() {
       {selectedImage !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-4xl max-h-full">
-            <button onClick={closeModal} className="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+            >
               <X className="h-8 w-8" />
             </button>
 
@@ -188,8 +194,12 @@ export default function GalleryPage() {
             />
 
             <div className="absolute bottom-4 left-4 text-white">
-              <p className="text-lg font-semibold">{allImages[selectedImage].category}</p>
-              <p className="text-sm text-gray-300">{allImages[selectedImage].alt}</p>
+              <p className="text-lg font-semibold">
+                {allImages[selectedImage].category}
+              </p>
+              <p className="text-sm text-gray-300">
+                {allImages[selectedImage].alt}
+              </p>
             </div>
 
             <div className="absolute bottom-4 right-4 text-white text-sm">
@@ -199,5 +209,5 @@ export default function GalleryPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

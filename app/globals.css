@@ -202,37 +202,23 @@ textarea {
 
 /* Infinite Marquee Animation - True Seamless Loop */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.333%);
-  }
+  0%   { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(-50%,0,0); } /* exactly half of the doubled track */
 }
 
-.animate-marquee {
-  animation: marquee 45s linear infinite;
+.marquee-track {
+  --gap: 2rem;                  /* same spacing as between items */
+  display: flex;
+  gap: var(--gap);
+  padding-inline: var(--gap);   /* adds the same gap before the first & after the last */
+  width: max-content;           /* makes the track as wide as its content */
+  animation: marquee 25s linear infinite;
+  will-change: transform;
 }
 
-.pause-marquee:hover {
-  animation-play-state: paused;
-}
+.marquee-track:hover { animation-play-state: paused; }
 
-/* Responsive marquee speeds */
-@media (max-width: 768px) {
-  .animate-marquee {
-    animation: marquee 35s linear infinite;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
-  }
-}
-
-@media (min-width: 1025px) {
-  .animate-marquee {
-    animation: marquee 45s linear infinite;
-  }
-}
+/* Optional responsive speeds */
+@media (max-width: 768px)  { .marquee-track { animation-duration: 35s; } }
+@media (min-width: 769px) and (max-width: 1024px) { .marquee-track { animation-duration: 30s; } }
+@media (min-width: 1025px) { .marquee-track { animation-duration: 25s; } }
