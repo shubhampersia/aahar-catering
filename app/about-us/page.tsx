@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutUsPage() {
   return (
-    <div className="pt-24">
+    <div className="pt-24" style={{ fontFamily: "Poppins, sans-serif" }}>
       {/* About Aahar Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-8 md:px-12">
