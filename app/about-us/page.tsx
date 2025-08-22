@@ -1,8 +1,14 @@
 import Image from "next/image";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function AboutUsPage() {
   return (
-    <div className="pt-24" style={{ fontFamily: "Poppins, sans-serif" }}>
+    <div className={`${poppins.className} pt-24`}>
       {/* About Aahar Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-8 md:px-12">
