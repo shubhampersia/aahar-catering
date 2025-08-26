@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-[#c68c2e] mb-4">aahar</h3>
+            <h3 className="text-2xl font-bold text-[#c68c2e] mb-4">ahar</h3>
             <p className="text-gray-600 mb-6">
               Where ingredients tell a story. From our kitchen to your table.
             </p>
@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-300 mt-12 pt-8 text-center">
-          <p className="text-gray-500">© 2025 aahar. All rights reserved.</p>
+          <p className="text-gray-500">© 2025 ahar. All rights reserved.</p>
         </div>
       </div>
     </footer>

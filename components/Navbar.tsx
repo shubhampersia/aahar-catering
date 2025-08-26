@@ -62,7 +62,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="text-3xl font-bold text-[#c68c2e]">
-            Aahar
+            Ahar
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,14 +9,13 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export default function CTAForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would implement the email sending functionality
-    // For now, we'll just show an alert
     alert("Message sent! We'll get back to you soon.");
   };
 
   return (
     <section id="cta-form" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
+        {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#c68c2e] mb-4">
             GET IN TOUCH
@@ -25,6 +23,7 @@ export default function CTAForm() {
           </h2>
         </div>
 
+        {/* 2-col layout */}
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 flex flex-col">
@@ -135,19 +134,22 @@ export default function CTAForm() {
             </form>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Information + Map */}
+          {/* Contact Information + Map */}
           <div className="flex flex-col h-full justify-between">
-            {/* Contact Details and Map */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 flex-1 overflow-hidden">
+            {/* Card: contact & map */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 flex-1">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
                 <h3 className="text-2xl font-bold text-gray-900">
                   Get in Touch
                 </h3>
                 <h4 className="text-2xl font-bold text-gray-900">Find Us</h4>
               </div>
+
+              {/* Equal-height columns */}
               <div className="grid lg:grid-cols-2 gap-8 h-full">
                 {/* Contact Info */}
-                <div className="space-y-6">
+                <div className="space-y-6 h-full">
                   <div className="flex items-start">
                     <Phone className="h-6 w-6 mr-4 text-[#c68c2e] flex-shrink-0" />
                     <div>
@@ -171,33 +173,40 @@ export default function CTAForm() {
                         Address
                       </p>
                       <p className="text-gray-600 text-lg">
-                        #20/1, Sharada Layout 3rd Cross Road, Raja Rajeshwaro
+                        #20/1, Sharada Layout 3rd Cross Road, Raja Rajeshwari
                         Nagar, Bengaluru - 560098
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Google Map */}
-                <div className="flex flex-col min-h-0">
-                  <div className="bg-gray-200 rounded-lg overflow-hidden flex-1 min-h-[200px] max-h-[300px] w-full">
+                {/* Map (responsive aspect ratio) */}
+                <div className="h-full">
+                  <div
+                    className="
+            relative w-full rounded-2xl overflow-hidden bg-gray-200
+            ring-1 ring-gray-200
+            aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]
+            mb-6            /* 👈 gives breathing room at the bottom */
+          "
+                  >
                     <iframe
+                      className="absolute inset-0 w-full h-full block"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.854431929819!2d77.50366671074131!3d12.917076016018571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f02c282a6e1%3A0x8889bd67075fd856!2sSharada%20Layout%203rd%20Cross%20Rd%2C%20Rajarajeshwari%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560098!5e0!3m2!1sen!2sin!4v1755804615948!5m2!1sen!2sin"
-                      width="100%"
-                      height="100%"
                       style={{ border: 0 }}
-                      allowFullScreen
                       loading="lazy"
+                      allowFullScreen
                       referrerPolicy="no-referrer-when-downgrade"
                       title="Our Location"
-                    ></iframe>
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Office Hours */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mt-3">
+            <div className="bg-white rounded-2xl shadow-xl p-8 mt-6">
+              {/* 👈 was mt-3 */}
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Office Hours
               </h3>
@@ -227,6 +236,8 @@ export default function CTAForm() {
               </div>
             </div>
           </div>
+
+          {/* /Contact Information + Map */}
         </div>
       </div>
     </section>

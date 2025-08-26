@@ -1,64 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
+import { services } from "@/data/services";
 
 export default function ServicesPage() {
-  const [activeTab, setActiveTab] = useState(0);
+  // Scroll to section without highlight
+  const scrollToSection = (slug: string) => {
+    const element = document.getElementById(slug);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
+  };
 
-  const services = [
-    {
-      iconSrc: "/building.svg",
-      title: "Corporate Catering",
-      description:
-        "Thoughtfully crafted menus that mirror your brand identity and deliver an elevated, flavour-rich corporate dining experience.",
-    },
-    {
-      iconSrc: "/marriage.svg",
-      title: "Weddings, Gala Dinners & Banquets",
-      description:
-        "Bespoke banquets designed for unforgettable evenings and elegant milestones.",
-    },
-    {
-      iconSrc: "/event.svg",
-      title: "Event Management & Catering",
-      description:
-        "One partner for flawless execution, exceptional taste, and complete peace of mind.",
-    },
-    {
-      iconSrc: "/dish.svg",
-      title: "Multi-Cuisine Food Delicacies",
-      description:
-        "From traditional to contemporary, flavour-forward dishes that celebrate every palate.",
-    },
-    {
-      iconSrc: "/conference.svg",
-      title: "Corporate Events",
-      description:
-        "Curated corporate moments that inspire, engage, and leave a lasting impression.",
-    },
-    {
-      iconSrc: "/business.svg",
-      title: "Conferences & Seminars Catering",
-      description:
-        "Timely, professional catering that aligns with your agenda and audience.",
-    },
-    {
-      iconSrc: "/chef-hat.svg",
-      title: "Private Dining Experiences",
-      description:
-        "Memorable private meals made effortless with elevated flavour and flawless service.",
-    },
-    {
-      iconSrc: "/cocktail.svg",
-      title: "Bar Services & Cocktail Events",
-      description:
-        "Sophisticated bar service for social events, launches, or elegant evenings.",
-    },
-  ];
+  // Handle initial load and hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      const urlParams = new URLSearchParams(window.location.search);
+      const cardParam = urlParams.get("card");
+
+      const targetSlug = hash || cardParam;
+      if (targetSlug) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          scrollToSection(targetSlug);
+        }, 100);
+      }
+    };
+
+    // Handle initial load
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   return (
-    <div className="pt-24">
+    <div className="pt-16">
       {/* Hero Section */}
       <section className="relative h-96 bg-cover bg-center flex items-center">
         <div
@@ -77,38 +64,50 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Tabs */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 rounded-xl shadow-lg p-10 hover:shadow-xl transition-shadow text-center min-h-[300px] flex flex-col justify-center items-center"
-                >
-                  <div className="mb-6">
-                    <Image
-                      src={service.iconSrc}
-                      alt={service.title}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 object-contain mx-auto"
-                      priority={index < 3}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    {service.title}
-                  </h3>
-                  <div className="text-gray-600 mb-6 leading-relaxed text-pretty flex-1">
-                    <span className="block">{service.description}</span>
+      {/* Services Sections */}
+      {services.map((service, index) => (
+        <section key={service.id} id={service.slug} className="scroll-mt-28">
+          <div
+            className={`full-bleed ${index % 2 ? "bg-gray-50" : "bg-white"}`}
+          >
+            <div className="max-w-7xl mx-auto px-6 lg:px-10">
+              <div className="grid lg:grid-cols-12 items-center gap-10 py-16 lg:py-24">
+                <div className="lg:col-span-6">
+                  <div className="flex items-start gap-4">
+                    <div className="text-[#c68c2e] flex-shrink-0 mt-1">
+                      <Image
+                        src={service.iconSrc}
+                        alt={`${service.title} icon`}
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 object-contain mx-auto"
+                        priority
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-[#c68c2e] font-extrabold uppercase leading-tight text-2xl md:text-3xl mb-3 relative after:content-[''] after:block after:h-1.5 after:w-24 after:bg-[#c68c2e] after:mt-3">
+                        {service.title}
+                      </h2>
+                      <p className="text-slate-700 text-lg leading-relaxed max-w-[75ch] whitespace-pre-line break-words">
+                        {service.content}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              ))}
+                <div className="lg:col-span-6">
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    width={600}
+                    height={400}
+                    className="w-full aspect-[16/10] md:aspect-[16/9] rounded-2xl shadow-xl object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
     </div>
   );
 }
