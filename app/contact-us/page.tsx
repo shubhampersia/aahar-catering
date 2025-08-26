@@ -153,7 +153,6 @@ export default function ContactUsPage() {
                   <h3 className="text-2xl font-bold text-gray-900">
                     Get in Touch
                   </h3>
-                  <h4 className="text-2xl font-bold text-gray-900">Find Us</h4>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-8 h-full">
                   {/* Contact Info */}
@@ -195,18 +194,24 @@ export default function ContactUsPage() {
                   </div>
 
                   {/* Google Map */}
-                  <div className="flex flex-col min-h-0">
-                    <div className="bg-gray-200 rounded-lg overflow-hidden flex-1 min-h-[200px] max-h-[300px] w-full">
+                  <div className="h-[80%]">
+                    <div
+                      className="
+            relative w-full rounded-2xl overflow-hidden bg-gray-200
+            ring-1 ring-gray-200
+            aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]
+            mb-6            /* 👈 gives breathing room at the bottom */
+          "
+                    >
                       <iframe
+                        className="absolute inset-0 w-full h-full block"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.854431929819!2d77.50366671074131!3d12.917076016018571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f02c282a6e1%3A0x8889bd67075fd856!2sSharada%20Layout%203rd%20Cross%20Rd%2C%20Rajarajeshwari%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560098!5e0!3m2!1sen!2sin!4v1755804615948!5m2!1sen!2sin"
-                        width="100%"
-                        height="100%"
                         style={{ border: 0 }}
-                        allowFullScreen
                         loading="lazy"
+                        allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
                         title="Our Location"
-                      ></iframe>
+                      />
                     </div>
                   </div>
                 </div>

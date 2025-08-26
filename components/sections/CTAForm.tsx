@@ -143,7 +143,6 @@ export default function CTAForm() {
                 <h3 className="text-2xl font-bold text-gray-900">
                   Get in Touch
                 </h3>
-                <h4 className="text-2xl font-bold text-gray-900">Find Us</h4>
               </div>
 
               {/* Equal-height columns */}
@@ -181,7 +180,7 @@ export default function CTAForm() {
                 </div>
 
                 {/* Map (responsive aspect ratio) */}
-                <div className="h-full">
+                <div className="h-[80%]">
                   <div
                     className="
             relative w-full rounded-2xl overflow-hidden bg-gray-200
