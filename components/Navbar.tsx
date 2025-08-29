@@ -64,7 +64,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/ahar_logo.svg"
+              src="/Ahar_Logo.svg"
               alt="ahar logo"
               width={0}
               height={0}
