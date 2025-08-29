@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +60,16 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-21">
           {/* Logo */}
-          <Link href="/" className="text-3xl font-bold text-[#c68c2e]">
-            Ahar
+          <Link href="/">
+            <Image
+              src="/ahar_logo.svg"
+              alt="ahar logo"
+              width={0}
+              height={0}
+              className="h-13 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

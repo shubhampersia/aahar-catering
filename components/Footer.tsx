@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const quickLinks = [
@@ -32,7 +33,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-[#c68c2e] mb-4">ahar</h3>
+            <Image
+              src="/ahar_logo.svg"
+              alt="ahar logo"
+              width={120}
+              height={40}
+              className="mb-4"
+            />
             <p className="text-gray-600 mb-6">
               Where ingredients tell a story. From our kitchen to your table.
             </p>

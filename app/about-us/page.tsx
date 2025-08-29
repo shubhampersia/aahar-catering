@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutUsPage() {
   return (
-    <div className="pt-24">
+    <div className="pt-16">
       {/* ============================= */}
       {/* About Ahar Section           */}
       {/* ============================= */}

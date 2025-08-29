@@ -11,7 +11,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center mt-24">
+    <section className="relative h-screen flex items-center justify-center">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
