@@ -4,15 +4,15 @@ import Image from "next/image";
 
 export default function TrustedBy() {
   const brands = [
-    { name: "Partner 1", logo: "/44.png" },
-    { name: "Partner 2", logo: "/6.png" },
-    { name: "Partner 3", logo: "/7.png" },
-    { name: "Partner 4", logo: "/11.png" },
-    { name: "Partner 5", logo: "/51.png" },
-    { name: "Partner 6", logo: "/22.png" },
-    { name: "Partner 7", logo: "/3.png" },
-    { name: "Partner 8", logo: "/88.png" },
-    { name: "Partner 9", logo: "/99.png" },
+    { name: "Partner 1", logo: "/Logos/avasarala.png" },
+    { name: "Partner 2", logo: "/Logos/qualitas.png" },
+    { name: "Partner 3", logo: "/Logos/cdac.png" },
+    { name: "Partner 4", logo: "/Logos/vidyashilp.png" },
+    { name: "Partner 5", logo: "/Logos/sikshana.png" },
+    { name: "Partner 6", logo: "/Logos/bhadra.png" },
+    { name: "Partner 7", logo: "/Logos/enchancesys.png" },
+    { name: "Partner 8", logo: "/Logos/safran.png" },
+    { name: "Partner 9", logo: "/Logos/meru.png" },
   ];
 
   return (

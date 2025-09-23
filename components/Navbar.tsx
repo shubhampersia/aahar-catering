@@ -38,6 +38,8 @@ export default function Navbar() {
   }, [isOpen]);
 
   const isHomePage = pathname === "/";
+  const isServicesPage = pathname === "/services";
+  const isOverlayMode = (isHomePage || isServicesPage) && !isScrolled;
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -51,12 +53,14 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isHomePage
-          ? isScrolled
-            ? "bg-white shadow-md"
-            : "bg-black bg-opacity-30"
-          : "bg-white shadow-md"
+      className={`top-0 w-full z-50 transition-all duration-300 ${
+        isOverlayMode
+          ? "absolute" // overlay on top of hero when at top of page
+          : "fixed shadow-md" // fixed with shadow for other states
+      } ${
+        isOverlayMode
+          ? "bg-black/50 backdrop-blur-md" // transparent overlay look
+          : "bg-white"
       }`}
     >
       <div className="container mx-auto px-6">
@@ -64,7 +68,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/Ahar_Logo.svg"
+              src="/icons/Ahar_Logo.svg"
               alt="ahar logo"
               width={0}
               height={0}
@@ -79,7 +83,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-medium text-xl transition-colors hover:text-[#c68c2e] ${
-                  isHomePage
+                  isHomePage || isServicesPage
                     ? isScrolled
                       ? "text-black"
                       : "text-white"
@@ -96,7 +100,7 @@ export default function Navbar() {
             {isOpen ? (
               <X
                 className={`h-7 w-7 ${
-                  isHomePage
+                  isHomePage || isServicesPage
                     ? isScrolled
                       ? "text-black"
                       : "text-white"
@@ -106,7 +110,7 @@ export default function Navbar() {
             ) : (
               <Menu
                 className={`h-7 w-7 ${
-                  isHomePage
+                  isHomePage || isServicesPage
                     ? isScrolled
                       ? "text-black"
                       : "text-white"

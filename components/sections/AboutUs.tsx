@@ -10,7 +10,7 @@ export default function AboutUs() {
           {/* Image */}
           <div>
             <Image
-              src="/professional-chef-cooking.png"
+              src="/aboutusPic.jpg"
               alt="Chef cooking"
               width={600}
               height={400}

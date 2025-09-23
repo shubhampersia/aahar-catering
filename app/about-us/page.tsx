@@ -14,7 +14,7 @@ export default function AboutUsPage() {
           <div className="hidden md:grid md:grid-cols-2 gap-12 items-center">
             <div className="px-4">
               <Image
-                src="/aboutus.png"
+                src="/aboutusPic.jpg"
                 alt="Ahar team"
                 width={600}
                 height={500}
@@ -52,7 +52,7 @@ export default function AboutUsPage() {
           <div className="md:hidden">
             <div className="mb-8 flex justify-center">
               <Image
-                src="/aboutus.png"
+                src="/aboutusPic.jpg"
                 alt="Ahar team"
                 width={500}
                 height={400}

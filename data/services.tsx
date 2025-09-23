@@ -14,8 +14,8 @@ export const services: Service[] = [
     id: 1,
     slug: "corporate-catering",
     title: "Corporate Catering",
-    iconSrc: "/building.svg",
-    image: "/corporate.png",
+    iconSrc: "/icons/building.svg",
+    image: "/services/corporate.png",
     excerpt:
       "Professional catering solutions for corporate meetings, conferences, and office events with seamless service.",
     content:
@@ -30,8 +30,8 @@ export const services: Service[] = [
     id: 2,
     slug: "corporate-events",
     title: "Corporate Events",
-    iconSrc: "/conference.svg",
-    image: "/eventPic.png",
+    iconSrc: "/icons/conference.svg",
+    image: "/services/eventPic.png",
     excerpt:
       "Complete event management for corporate gatherings, team building events, and company celebrations.",
     content:
@@ -41,8 +41,8 @@ export const services: Service[] = [
     id: 3,
     slug: "event-management-and-catering",
     title: "Event Management & Catering",
-    iconSrc: "/event.svg",
-    image: "/eventCorporate.png",
+    iconSrc: "/icons/event.svg",
+    image: "/services/eventCorporate.png",
     excerpt:
       "Full-service event planning and catering for all types of occasions, from intimate to grand scale.",
     content:
@@ -52,8 +52,8 @@ export const services: Service[] = [
     id: 4,
     slug: "private-dining-experiences",
     title: "Private Dining Experiences",
-    iconSrc: "/champagne.svg",
-    image: "/private.png",
+    iconSrc: "/icons/champagne.svg",
+    image: "/services/private.png",
     excerpt:
       "Exclusive private dining services with personalized menus and intimate service for special occasions.",
     content:
@@ -63,8 +63,8 @@ export const services: Service[] = [
     id: 5,
     slug: "bar-services-and-cocktail-events",
     title: "Bar Services & Cocktail Events",
-    iconSrc: "/cocktail.svg",
-    image: "/bar.png",
+    iconSrc: "/icons/cocktail.svg",
+    image: "/services/bar.png",
     excerpt:
       "Professional bartending services and cocktail catering for parties, receptions, and social events.",
     content:
@@ -74,8 +74,8 @@ export const services: Service[] = [
     id: 6,
     slug: "weddings-gala-dinners-banquets",
     title: "Weddings, Gala Dinners & Banquets",
-    iconSrc: "/marriage.svg",
-    image: "/banquet.png",
+    iconSrc: "/icons/marriage.svg",
+    image: "/services/banquet.png",
     excerpt:
       "Elegant catering and event services for weddings, gala dinners, and formal banquet occasions.",
     content:

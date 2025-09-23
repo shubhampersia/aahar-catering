@@ -9,64 +9,29 @@ export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
 
+  // Keep unique images
   const allImages = [
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Corporate event catering setup",
-      category: "Corporate Events",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Elegant wedding reception",
-      category: "Weddings",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Gourmet food presentation",
-      category: "Food",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Conference catering service",
-      category: "Conferences",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Cocktail bar setup",
-      category: "Bar Services",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Private dining experience",
-      category: "Private Dining",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Multi-cuisine buffet spread",
-      category: "Food",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Gala dinner setup",
-      category: "Gala Dinners",
-    },
-    {
-      src: "/placeholder.svg?height=400&width=600",
-      alt: "Team building event catering",
-      category: "Corporate Events",
-    },
+    { src: "/aboutusPic.jpg" },
+    { src: "/Gallery/Gallery1.jpg" },
+    { src: "/Gallery/Gallery2.jpg" },
+    { src: "/Gallery/Gallery4.jpg" },
+    { src: "/Gallery/Gallery5.jpg" },
+    { src: "/Gallery/Gallery6.jpg" },
+    { src: "/Gallery/Gallery7.jpg" },
+    { src: "/Gallery/Gallery8.jpg" },
+    { src: "/Gallery/Gallery9.jpg" },
+    { src: "/Gallery/Gallery10.jpg" },
+     { src: "/Gallery/Gallery11.jpg" },
   ];
 
-  const imagesPerPage = [6, 3]; // First page: 6 images, Second page: 3 images
-  const totalPages = 2;
+const imagesPerPage = 6; // show 6 images per page
+const totalPages = Math.ceil(allImages.length / imagesPerPage);
 
-  const getCurrentPageImages = () => {
-    if (currentPage === 0) {
-      return allImages.slice(0, 6);
-    } else {
-      return allImages.slice(6, 9);
-    }
-  };
+const getCurrentPageImages = () => {
+  const start = currentPage * imagesPerPage;
+  const end = start + imagesPerPage;
+  return allImages.slice(start, end);
+};
 
   const galleryImages = getCurrentPageImages();
 
@@ -75,9 +40,7 @@ export default function GalleryPage() {
     setSelectedImage(actualIndex);
   };
 
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const closeModal = () => setSelectedImage(null);
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -116,21 +79,16 @@ export default function GalleryPage() {
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer group h-64"
+                className="relative overflow-hidden rounded-xl shadow-lg transition-shadow cursor-pointer h-64 group"
                 onClick={() => openModal(index)}
               >
                 <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
+                  src={image.src}
+                  alt=""
                   width={600}
                   height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-lg font-semibold">{image.category}</p>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
@@ -164,6 +122,7 @@ export default function GalleryPage() {
       {selectedImage !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-4xl max-h-full">
+            {/* Close */}
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
@@ -171,6 +130,7 @@ export default function GalleryPage() {
               <X className="h-8 w-8" />
             </button>
 
+            {/* Prev */}
             <button
               onClick={prevImage}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10"
@@ -178,6 +138,7 @@ export default function GalleryPage() {
               <ChevronLeft className="h-8 w-8" />
             </button>
 
+            {/* Next */}
             <button
               onClick={nextImage}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10"
@@ -185,26 +146,14 @@ export default function GalleryPage() {
               <ChevronRight className="h-8 w-8" />
             </button>
 
+            {/* Only the image */}
             <Image
-              src={allImages[selectedImage].src || "/placeholder.svg"}
-              alt={allImages[selectedImage].alt}
+              src={allImages[selectedImage].src}
+              alt=""
               width={800}
               height={600}
               className="max-w-full max-h-full object-contain rounded-lg"
             />
-
-            <div className="absolute bottom-4 left-4 text-white">
-              <p className="text-lg font-semibold">
-                {allImages[selectedImage].category}
-              </p>
-              <p className="text-sm text-gray-300">
-                {allImages[selectedImage].alt}
-              </p>
-            </div>
-
-            <div className="absolute bottom-4 right-4 text-white text-sm">
-              {selectedImage + 1} / {allImages.length}
-            </div>
           </div>
         </div>
       )}

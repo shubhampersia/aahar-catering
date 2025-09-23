@@ -34,7 +34,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image
-              src="/Ahar_Logo.svg"
+              src="/icons/Ahar_Logo.svg"
               alt="ahar logo"
               width={120}
               height={40}

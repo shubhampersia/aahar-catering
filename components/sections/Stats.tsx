@@ -72,7 +72,7 @@ export default function Stats() {
     {
       icon: (
         <Image
-          src="/client.svg"
+          src="/icons/client.svg"
           alt="Clients served icon"
           width={64}
           height={64}
@@ -86,7 +86,7 @@ export default function Stats() {
     {
       icon: (
         <Image
-          src="/plates.svg"
+          src="/icons/plates.svg"
           alt="Plates served icon"
           width={80}
           height={80}
@@ -100,7 +100,7 @@ export default function Stats() {
     {
       icon: (
         <Image
-          src="/calendar.svg"
+          src="/icons/calendar.svg"
           alt="Meals served per day icon"
           width={64}
           height={64}
@@ -114,7 +114,7 @@ export default function Stats() {
     {
       icon: (
         <Image
-          src="/star.svg"
+          src="/icons/star.svg"
           alt="Highest meals catered icon"
           width={64}
           height={64}
@@ -128,7 +128,7 @@ export default function Stats() {
     {
       icon: (
         <Image
-          src="/handshake.svg"
+          src="/icons/handshake.svg"
           alt="Customer retention icon"
           width={64}
           height={64}

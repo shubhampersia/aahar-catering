@@ -45,19 +45,25 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Hero Section */}
-      <section className="relative h-96 bg-cover bg-center flex items-center">
+      <section className="relative h-[400px] md:h-[600px] lg:h-screen flex items-center">
+        {" "}
+        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundColor: "black" }}
-        ></div>
+          style={{ backgroundImage: "url('/servicePic.jpg')" }}
+        >
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+        </div>
+        {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl text-center md:text-left">
-            <h1 className="text-5xl md:text-6xl font-bold text-[#c68c2e] mb-4 animate-fade-in-up">
+            <h1 className="text-5xl md:text-6xl font-bold text-[#c68c2e] mb-4 animate-fade-in-up drop-shadow-[0_3px_6px_rgba(0,0,0,0.6)]">
               Signature Touches
             </h1>
-            <p className="text-xl text-gray-200">
+            <p className="text-xl text-gray-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
               Exceptional service and culinary excellence for every occasion
             </p>
           </div>

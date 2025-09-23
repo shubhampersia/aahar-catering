@@ -6,7 +6,7 @@ export default function WhyChooseUs() {
     {
       icon: (
         <Image
-          src="/group.svg"
+          src="/icons/group.svg"
           alt="Well-Trained Staff icon"
           width={64}
           height={64}
@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
     {
       icon: (
         <Image
-          src="/menu.svg"
+          src="/icons/menu.svg"
           alt="Customizable Menus"
           width={64}
           height={64}
@@ -36,7 +36,7 @@ export default function WhyChooseUs() {
     {
       icon: (
         <Image
-          src="/quality.svg"
+          src="/icons/quality.svg"
           alt="Exceptional Quality"
           width={64}
           height={64}
@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
     {
       icon: (
         <Image
-          src="/chef-hat.svg"
+          src="/icons/chef-hat.svg"
           alt="Expert Chefs for Every Cuisine"
           width={64}
           height={64}
