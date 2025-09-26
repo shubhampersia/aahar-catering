@@ -8,11 +8,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactUsPage() {
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would implement the email sending functionality to simplecoder007@gmail.com
-    alert("Message sent! We'll get back to you soon.");
-  };
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  // merge first + last name
+  data.name = `${data.firstName || ""} ${data.lastName || ""}`.trim();
+
+  try {
+    const res = await fetch("/api", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      alert("Message sent! We'll get back to you soon.");
+      form.reset();
+    } else {
+      const err = await res.json();
+      alert("Failed to send: " + (err.error || "Unknown error"));
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  }
+};
 
   return (
     <div className="pt-16">
@@ -47,6 +69,7 @@ export default function ContactUsPage() {
                     </label>
                     <Input
                       id="firstName"
+                      name="firstName"
                       type="text"
                       placeholder="Enter your first name"
                       className="rounded-lg h-14 text-lg border-2 border-gray-200 focus:border-orange-500"
@@ -62,6 +85,7 @@ export default function ContactUsPage() {
                     </label>
                     <Input
                       id="lastName"
+                      name="lastName"
                       type="text"
                       placeholder="Enter your last name"
                       className="rounded-lg h-14 text-lg border-2 border-gray-200 focus:border-orange-500"
@@ -79,6 +103,7 @@ export default function ContactUsPage() {
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="your.email@example.com"
                       className="rounded-lg h-14 text-lg border-2 border-gray-200 focus:border-orange-500"
@@ -94,6 +119,7 @@ export default function ContactUsPage() {
                     </label>
                     <Input
                       id="phone"
+                      name="phone"
                       type="tel"
                       placeholder="Your phone number"
                       className="rounded-lg h-14 text-lg border-2 border-gray-200 focus:border-orange-500"
@@ -111,6 +137,7 @@ export default function ContactUsPage() {
                   </label>
                   <Input
                     id="subject"
+                    name="subject"
                     type="text"
                     placeholder="Event type or inquiry topic"
                     className="rounded-lg h-14 text-lg border-2 border-gray-200 focus:border-orange-500"
@@ -127,6 +154,7 @@ export default function ContactUsPage() {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     rows={8}
                     placeholder="Please provide details about your event including date, number of guests, type of event, specific requirements, dietary preferences, budget range, and any other relevant information that will help us serve you better..."
                     className="rounded-lg text-lg border-2 border-gray-200 focus:border-orange-500 resize-none"

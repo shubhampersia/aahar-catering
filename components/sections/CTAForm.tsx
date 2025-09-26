@@ -7,10 +7,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function CTAForm() {
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Message sent! We'll get back to you soon.");
-  };
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  // merge first + last name
+  data.name = `${data.firstName || ""} ${data.lastName || ""}`.trim();
+
+  try {
+    const res = await fetch("/api", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      alert("Message sent! We'll get back to you soon.");
+      form.reset();
+    } else {
+      const err = await res.json();
+      alert("Failed to send: " + (err.error || "Unknown error"));
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  }
+};
 
   return (
     <section id="cta-form" className="py-20 bg-gray-50">
@@ -38,6 +61,7 @@ export default function CTAForm() {
                   </label>
                   <Input
                     id="firstName"
+                    name="firstName"
                     type="text"
                     placeholder="Your first name"
                     className="rounded-lg h-12 text-base"
@@ -53,6 +77,7 @@ export default function CTAForm() {
                   </label>
                   <Input
                     id="lastName"
+                    name="lastName"
                     type="text"
                     placeholder="Your last name"
                     className="rounded-lg h-12 text-base"
@@ -70,6 +95,7 @@ export default function CTAForm() {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="your.email@example.com"
                     className="rounded-lg h-12 text-base"
@@ -85,6 +111,7 @@ export default function CTAForm() {
                   </label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
                     placeholder="Your phone number"
                     className="rounded-lg h-12 text-base"
@@ -102,6 +129,7 @@ export default function CTAForm() {
                 </label>
                 <Input
                   id="subject"
+                  name="subject"
                   type="text"
                   placeholder="Event type or inquiry"
                   className="rounded-lg h-12 text-base"
@@ -118,6 +146,7 @@ export default function CTAForm() {
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   rows={8}
                   placeholder="Please provide detailed information about your event including: event date and time, number of guests expected, type of event (corporate meeting, wedding, conference, etc.), preferred cuisine or dietary requirements, budget range, venue location, specific services needed (catering only, full event management, bar services, etc.), any special requests or themes, and any other relevant details that will help us create the perfect experience for you..."
                   className="rounded-lg text-base flex-1 min-h-[200px]"

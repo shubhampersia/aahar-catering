@@ -1,15 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 type Testimonial = {
   quote: string;
-  name: string;
-  role: string;
-  image: string; // path under /public
 };
 
 export default function TestimonialsCarousel() {
@@ -19,23 +15,14 @@ export default function TestimonialsCarousel() {
     {
       quote:
         "Exceeded expectations with punctual service, spotless setup, and delicious food for 1500+ participants",
-      name: "Mahalakshmi",
-      role: "Sr. Executive, Partnerships, Shikshana Foundation",
-      image: "/testimonial-2.png",
     },
     {
       quote:
         "Reliable and professional, Ahar impresses us every time with tasty food and attention to detail",
-      name: "Aswath Rao",
-      role: "Admin officer, Centre for Development of Advanced Computing (C-DAC)",
-      image: "/testimonial-1.png",
     },
     {
       quote:
         "Fresh, flavourful food with flawless service, turning every corporate meal into a memorable experience",
-      name: "Sudhindra Kundapura",
-      role: "Managing Director, Meru Info solutions Pvt Ltd",
-      image: "/testimonial-3.png",
     },
   ];
 
@@ -75,20 +62,9 @@ export default function TestimonialsCarousel() {
                 key={index}
                 className="bg-white rounded-xl shadow-lg p-8 text-center"
               >
-                <Image
-                  src={t.image || "/placeholder.svg"}
-                  alt={t.name}
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 rounded-full mx-auto mb-6 object-cover shadow-md"
-                />
-                <blockquote className="text-lg text-gray-600 italic mb-6 leading-relaxed text-pretty flex-1">
-                  {t.quote}
+                <blockquote className="text-lg text-gray-600 italic leading-relaxed text-pretty">
+                  "{t.quote}"
                 </blockquote>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-lg">{t.name}</h4>
-                  <p className="text-[#c68c2e] font-medium">{t.role}</p>
-                </div>
               </div>
             ))}
           </div>
